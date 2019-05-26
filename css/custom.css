@@ -1,0 +1,18 @@
+.error-no-email {
+	display: none;
+}
+.error-wrong-email {
+	display: none;
+}
+.error-no-password {
+	display: none;
+}
+.error-wrong-password {
+	display: none;
+}
+.error-pass-and-email {
+	display: none;
+}
+.error-comment {
+	display: none;
+}
