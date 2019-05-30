@@ -35,6 +35,7 @@ $(document).ready(function(){
 						  $(".error-no-password").css("display", "none"); 
 
 						});	
+					
 
 				} else{
 
@@ -45,6 +46,7 @@ $(document).ready(function(){
 						  $(".error-wrong-password").css("display", "none");
 
 						});
+					var validPassword = false;
 				}
 
 
@@ -52,32 +54,71 @@ $(document).ready(function(){
 		           // EMAIL
 
 
+					if (email.length == 0) {
+				
+						$(".error-no-email").css("display", "block");
 
-				if (email == "mail@mail.com") {
+						$('#email').on('focus', function(){
 
-					var validEmail = true;
+					 		 $(".error-no-email").css("display", "none"); 
 
-				} else if (email.length == 0) {
+						});
+
+					}
+
+					if (email !== '') {
+
+						var pattern = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/i;
+
+						if (pattern.test( email )) {
+
+							if (email == "mail@mail.com") {
+
+								var validEmail = true;
+
+							} else {
+
+								$(".error-wrong-email").css("display", "block");
+
+								$('#email').on('focus', function(){
+
+								    $(".error-wrong-email").css("display", "none");
+
+								});
+									var validEmail = false;
+							}
+
+						}else {
+
+							$(".error-wrong-email").css("display", "block");
+
+							$('#email').on('focus', function(){
+
+							    $(".error-wrong-email").css("display", "none");
+
+							});
+							var validEmail = false;
+
+						}
+					}
+
+					if (validPassword == false && validEmail == false) {
+
+						$(".error-wrong-email").css("display", "none");
+						$(".error-wrong-password").css("display", "none");
+
+						$(".error-pass-and-email").css("display", "block");
+
+						$('#email').on('focus', function(){
+
+						    $(".error-pass-and-email").css("display", "none");
+
+						});
 					
-					$(".error-no-email").css("display", "block");
+					}
 
-					$('#email').on('focus', function(){
 
-						  $(".error-no-email").css("display", "none"); 
-
-						});
-
-				} else {
-
-					$(".error-wrong-email").css("display", "block");
-
-					$('#email').on('focus', function(){
-
-						  $(".error-wrong-email").css("display", "none");
-
-						});
-
-				}
+				
 
 
 
